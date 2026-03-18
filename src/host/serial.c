@@ -1,13 +1,14 @@
 #include "serial.h"
+#include <stdio.h>
 #include <string.h>
 
 HANDLE serial_open(const char *port) {
     // COM ports > COM9 require the \\.\COMxx form
     char path[24];
     if (strlen(port) > 4) {
-        _snprintf(path, sizeof(path), "\\\\.\\%s", port);
+        snprintf(path, sizeof(path), "\\\\.\\%s", port);
     } else {
-        _snprintf(path, sizeof(path), "%s", port);
+        snprintf(path, sizeof(path), "%s", port);
     }
 
     HANDLE h = CreateFileA(
@@ -78,8 +79,7 @@ void serial_list_ports(char ports[][16], int *count) {
                                  NULL, &type, (LPBYTE)val_data, &data_len);
         if (ret == ERROR_NO_MORE_ITEMS) break;
         if (ret != ERROR_SUCCESS || type != REG_SZ) continue;
-        strncpy(ports[*count], val_data, 15);
-        ports[*count][15] = '\0';
+        snprintf(ports[*count], 16, "%s", val_data);
         (*count)++;
     }
     RegCloseKey(hKey);
