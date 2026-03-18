@@ -1,6 +1,5 @@
 #include "resource.h"
 #include <windows.h>
-#include <commctrl.h>
 
 IDD_MAIN DIALOGEX 0, 0, 280, 120
 STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
@@ -15,7 +14,7 @@ BEGIN
     EDITTEXT        IDC_INPUT,   8, 30, 264, 14, ES_AUTOHSCROLL | WS_TABSTOP
 
     LTEXT           "Speed : 5",  IDC_STATIC,  8,  55, 36, 10
-    CONTROL         "", IDC_SPEED, TRACKBAR_CLASS,
+    CONTROL         "", IDC_SPEED, "msctls_trackbar32",
                     TBS_HORZ | TBS_AUTOTICKS | WS_TABSTOP,
                     44, 53, 196, 18
     LTEXT           "25 WPM",    IDC_STATIC,  244, 55, 34, 10
