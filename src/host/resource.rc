@@ -1,0 +1,23 @@
+#include "resource.h"
+#include <windows.h>
+#include <commctrl.h>
+
+IDD_MAIN DIALOGEX 0, 0, 280, 120
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "arduino-morse"
+FONT 9, "Segoe UI"
+BEGIN
+    LTEXT           "Port :", IDC_STATIC, 8, 10, 24, 10
+    COMBOBOX        IDC_PORT,    36, 8,  60, 80, CBS_DROPDOWNLIST | WS_TABSTOP
+    PUSHBUTTON      "Connect",   IDC_CONNECT, 102, 7, 50, 14, WS_TABSTOP
+    LTEXT           "●",         IDC_STATUS,  158, 10, 10, 10
+
+    EDITTEXT        IDC_INPUT,   8, 30, 264, 14, ES_AUTOHSCROLL | WS_TABSTOP
+
+    LTEXT           "Speed : 5",  IDC_STATIC,  8,  55, 36, 10
+    CONTROL         "", IDC_SPEED, TRACKBAR_CLASS,
+                    TBS_HORZ | TBS_AUTOTICKS | WS_TABSTOP,
+                    44, 53, 196, 18
+    LTEXT           "25 WPM",    IDC_STATIC,  244, 55, 34, 10
+    LTEXT           "15 WPM",    IDC_SPEED_LABEL, 110, 73, 60, 10
+END
